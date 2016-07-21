@@ -117,34 +117,34 @@ body{
 /*CSS pagida na Aliance*/
 .draenei {
     background-image: url("../img/draenei.jpg");
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
     margin: 0 auto;
 }
 .gnomo {
     background-image: url("../img/gnomo.jpg");
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
     margin: 0 auto;
 }
 
 .anao {
     background-image: url("../img/anao.jpg");
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
     margin: 0 auto;
 }
 
 .human {
     background-image: url("../img/humano.jpg");
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
     margin: 0 auto;
 }
 
 .elfn {
     background-image: url("../img/elfo-noturno (1).jpg");
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
     margin: 0 auto;
 }
@@ -166,43 +166,43 @@ body{
 /*Css pagina da Horda*/
 .panda{
     background-image: url("../img/panda (1).jpg");
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
     margin: 0 auto;
 }
 .blood{
     background-image: url("../img/blood-elf.jpg");
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
     margin: 0 auto;
 }
 .undead{
     background-image: url("../img/undead.jpg");
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
     margin: 0 auto;
 }
 .orc{
     background-image: url("../img/orc.jpg");
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
     margin: 0 auto;
 }
 .tauren{
     background-image: url("../img/tauren.jpg");
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
     margin: 0 auto;
 }
 .troll{
     background-image: url("../img/troll.jpg");
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
     margin: 0 auto;
 }
 .goblin{
     background-image: url("../img/goblin.png");
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
     margin: 0 auto;
 }
