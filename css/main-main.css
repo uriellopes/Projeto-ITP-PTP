@@ -1,0 +1,289 @@
+@charset "UTF-8";
+body{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: black;
+    color: white;
+}
+/*Barra de navegação?*/
+.navigation {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    z-index: 99;
+    background: transparent;
+    width: 100%;
+    height: 80px;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    -webkit-flex-flow: row wrap;
+    /*justify-content: flex-end;*/
+    border: 1px solid black;
+}
+
+.navigation li:first-child {
+    margin-right: auto;
+}
+
+.navigation li:nth-child(4) {
+    margin-right: 70px;
+}
+
+.navigation a {
+    text-decoration: none;
+    font-family: 'Great Vibes', cursive;
+    font-size: 30px;
+    display: flex;
+    padding: 1em;
+    color: white;
+}
+.navigation a:hover {
+    color:rgba(0,255,0,0.5);
+    transition: 2s;
+}
+/*Imagem header*/
+.img-header{
+    width: 100%;
+    margin: 0 auto;
+    max-height: 600px;
+}
+/*CSS pagida na Aliance*/
+.draenei {
+    background-image: url("../img/draenei.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+}
+.gnomo {
+    background-image: url("../img/gnomo.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+}
+
+.anao {
+    background-image: url("../img/anao.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+}
+
+.human {
+    background-image: url("../img/humano.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+}
+
+.elfn {
+    background-image: url("../img/elfo-noturno (1).jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+}
+#aliance {
+    background-image: url("../img/back-ali.jpg");
+    background-size: cover;
+    margin: 0 auto;
+}
+
+#aliance h2 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 35px;
+    color: white;
+}
+#aliance p{
+    color: white;
+}
+
+
+/*Css pagina da Horda*/
+.panda{
+    background-image: url("../img/panda (1).jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+}
+.blood{
+    background-image: url("../img/blood-elf.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+}
+.undead{
+    background-image: url("../img/undead.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+}
+.orc{
+    background-image: url("../img/orc.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+}
+.tauren{
+    background-image: url("../img/tauren.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+}
+.troll{
+    background-image: url("../img/troll.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+}
+.goblin{
+    background-image: url("../img/goblin.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+}
+#horda {
+    background-image: url("../img/img-bc.jpg");
+    background-size: cover;
+    margin: 0 auto;
+}
+
+#horda h2 {
+    font-family: 'Great Vibes', cursive;
+    color: white;
+    font-size: 35px;
+}
+#horda p{
+    color: white;
+}
+
+/*grid*/
+.container-fluid{
+    margin: 0;
+    padding: 0;
+    display: flex; /*inline-flex*/
+    flex-direction: row; /*row-reverse column column-reverse*/
+    flex-wrap: wrap; /*wrap wrap-reverse*/
+    box-sizing: border-box;
+}
+.row {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+
+}
+
+.col-1,
+.col-2,
+.col-3,
+.col-4,
+.col-5,
+.col-6,
+.col-7,
+.col-8,
+.col-9,
+.col-10,
+.col-11,
+.col-12 {
+    --margin-col: 2px;
+    margin: var(--margin-col);
+    box-sizing: border-box;
+
+    border: 1px solid #000;
+}
+
+.col-1  {width: calc(((100% *  1) /12) - (var(--margin-col) * 2));}
+.col-2  {width: calc(((100% *  2) /12) - (var(--margin-col) * 2));}
+.col-3  {width: calc(((100% *  3) /12) - (var(--margin-col) * 2));}
+.col-4  {width: calc(((100% *  4) /12) - (var(--margin-col) * 2));}
+.col-5  {width: calc(((100% *  5) /12) - (var(--margin-col) * 2));}
+.col-6  {width: calc(((100% *  6) /12) - (var(--margin-col) * 2));}
+.col-7  {width: calc(((100% *  7) /12) - (var(--margin-col) * 2));}
+.col-8  {width: calc(((100% *  8) /12) - (var(--margin-col) * 2));}
+.col-9  {width: calc(((100% *  9) /12) - (var(--margin-col) * 2));}
+.col-10 {width: calc(((100% * 10) /12) - (var(--margin-col) * 2));}
+.col-11 {width: calc(((100% * 11) /12) - (var(--margin-col) * 2));}
+.col-12 {width: calc(((100% * 12) /12) - (var(--margin-col) * 2));}
+
+.center p{
+    text-align: justify;
+}
+.start {
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    text-align: start;
+}
+
+.center {
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.end {
+    -webkit-justify-content: flex-end;
+    -ms-flex-pack: end;
+    -webkit-box-pack: end;
+    justify-content: flex-end;
+    text-align: end;
+}
+
+.top {
+    -webkit-align-items: flex-start;
+    -ms-flex-align: start;
+    -webkit-box-align: start;
+    align-items: flex-start;
+}
+
+.middle {
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.bottom {
+    -webkit-align-items: flex-end;
+    -ms-flex-align: end;
+    -webkit-box-align: end;
+    align-items: flex-end;
+}
+
+.around {
+    -webkit-justify-content: space-around;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+}
+
+.between {
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+}
+
+.first {
+    -webkit-order: -1;
+    -ms-flex-order: -1;
+    -webkit-box-ordinal-group: 0;
+    order: -1;
+}
+
+.last {
+    -webkit-order: 1;
+    -ms-flex-order: 1;
+    -webkit-box-ordinal-group: 2;
+    order: 1;
+}
