@@ -1,11 +1,11 @@
-var header = document.getElementById('header');
+var header = document.getElementById('ul');
 
 setInterval(function () {
     if (window.pageYOffset == 0) {
-        header.classList.add('header');
-        header.classList.remove('header-less');
+        ul.classList.add('navigation');
+        ul.classList.remove('navigation-move');
     } else {
-        header.classList.add('header-less');
-        header.classList.remove('header');
+        ul.classList.add('navigation-move');
+        ul.classList.remove('navigation');
     }
 }, 50);
