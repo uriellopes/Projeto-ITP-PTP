@@ -39,7 +39,7 @@ body{
 
 .navigation-move a {
     text-decoration: none;
-    font-family: 'Great Vibes', cursive;
+    font-family: 'Montserrat', sans-serif;
     font-size: 30px;
     display: flex;
     padding: 1em;
@@ -96,7 +96,7 @@ body{
 
 .navigation a {
     text-decoration: none;
-    font-family: 'Great Vibes', cursive;
+    font-family: 'Montserrat', sans-serif;
     font-size: 30px;
     display: flex;
     padding: 1em;
@@ -152,7 +152,7 @@ body{
 }
 
 #aliance h2 {
-    font-family: 'Great Vibes', cursive;
+  font-family: 'Montserrat', sans-serif;
     font-size: 35px;
     color: white;
 }
@@ -210,9 +210,9 @@ body{
 }
 
 #horda h2 {
-    font-family: 'Great Vibes', cursive;
-    color: white;
-    font-size: 35px;
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  font-size: 35px;
 }
 #horda p{
     color: white;
