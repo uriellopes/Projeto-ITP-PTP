@@ -344,3 +344,8 @@ body{
     -webkit-box-ordinal-group: 2;
     order: 1;
 }
+@media (max-width: 760px) {
+  .row {
+    visibility: hidden;
+  }
+}
