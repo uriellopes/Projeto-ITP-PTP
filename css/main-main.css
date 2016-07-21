@@ -90,8 +90,7 @@ body{
     margin: 0 auto;
 }
 #aliance {
-    background-image: url("../img/back-ali.jpg");
-    background-size: cover;
+    background-color: black;
     margin: 0 auto;
 }
 
@@ -149,8 +148,7 @@ body{
     margin: 0 auto;
 }
 #horda {
-    background-image: url("../img/img-bc.jpg");
-    background-size: cover;
+    background-color: black;
     margin: 0 auto;
 }
 
