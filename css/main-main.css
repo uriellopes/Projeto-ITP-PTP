@@ -26,6 +26,8 @@ body{
     align-items: center;
     -webkit-flex-flow: row wrap;
     border: 3px solid white;
+    border-right-style: hidden;
+    border-left-style: hidden;
     transition: .5s ease-out;
     /*justify-content: flex-end;*/
 }
