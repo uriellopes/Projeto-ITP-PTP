@@ -1,0 +1,100 @@
+vazio1
+0
+0
+0.000000
+vazio
+vazio
+32 13 9999
+0
+0
+0
+vazio2
+0
+0
+0.000000
+vazio
+vazio
+32 13 9999
+0
+0
+0
+vazio3
+0
+0
+0.000000
+vazio
+vazio
+32 13 9999
+0
+0
+0
+vazio4
+0
+0
+0.000000
+vazio
+vazio
+32 13 9999
+0
+0
+0
+vazio5
+0
+0
+0.000000
+vazio
+vazio
+32 13 9999
+0
+0
+0
+vazio6
+0
+0
+0.000000
+vazio
+vazio
+32 13 9999
+0
+0
+0
+vazio7
+0
+0
+0.000000
+vazio
+vazio
+32 13 9999
+0
+0
+0
+vazio8
+0
+0
+0.000000
+vazio
+vazio
+32 13 9999
+0
+0
+0
+vazio9
+0
+0
+0.000000
+vazio
+vazio
+32 13 9999
+0
+0
+0
+vazio10
+0
+0
+0.000000
+vazio
+vazio
+32 13 9999
+0
+0
+0
