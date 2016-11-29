@@ -135,6 +135,7 @@ void menuBuscar(Produto *produto) { //Menu de busca
         printf("2 - Buscar por quantidade no estoque\n");
         printf("0 - Sair\n");
         scanf("%i",&escolha);
+        system ("cls");
         switch (escolha) {
         case 1:
             buscarPreco(produto); //Chamando a função para buscar os produtos de acordo com o preço
@@ -183,6 +184,7 @@ void carrinhoDeCompras(Produto *produto){ //Funcao do Carrinho de Compras
         printf("3 - Fechar Compra\n");
         printf("0 - Sair\n");
         scanf("%i",&escolha);
+        system ("cls");
         switch (escolha) {
         case 1:
             for(i = 0; i < 10; i++) { //Vendo uma posição vazia do carrinho
@@ -250,6 +252,7 @@ void menuCliente(Produto *produto){ //Função do menu do cliente
         printf("2 - Carrinho de Compras\n");
         printf("0 - Sair\n");
         scanf("%i",&escolha);
+        system ("cls");
         switch(escolha) {
         case 1:
             menuBuscar(produto); //Chamando a funcao do menu de busca
@@ -342,6 +345,7 @@ void menuFuncionario(Produto *produto){ //Função do menu do funcionario
         printf("3 - Buscar produto\n");
         printf("0 - Sair\n");
         scanf("%i",&escolha);
+        system ("cls");
         switch(escolha) {
         case 1:
             inserirProduto(produto); //Chamando a função para inserir novos produtos
@@ -363,6 +367,8 @@ void menuFuncionario(Produto *produto){ //Função do menu do funcionario
 
 int main()
 {
+    system ("color f0");
+
     int i,escolha;
     Produto produto[10];
     FILE *arquivo = fopen("produtos.txt","r"); //Abringo o arquivo como leitura
@@ -390,6 +396,7 @@ int main()
         printf("2 - Funcionario\n");
         printf("0 - Sair\n");
         scanf("%i",&escolha);
+        system ("cls");
         switch (escolha) {
         case 1:
             menuCliente(produto); //Chamando a função do menu do cliente
@@ -425,4 +432,3 @@ int main()
 
     return 0;
 }
-
