@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <locale.h>
 
 typedef struct{ //Registo para armazenar a data de validade
     int dia;
@@ -293,7 +294,8 @@ void inserirProduto(Produto *produto) { //Função para inserir novos produtos n
     for(i = 0; i < 10; i++) { //Verificando se tem algum lugar livre para adicionar produto novo, se não tiver , aumentar o contador
         if(produto[i].qtdestoque == 0) { //Caso tenho um lugar livre, receber informações do produto
             printf("Digite o nome do novo produto: \n");
-            scanf("%s",produto[i].nome);
+            getchar();
+            scanf("%[^\n]s",produto[i].nome);
             printf("Digite o preço do novo produto: \n");
             scanf("%f",&produto[i].preco);
             printf("Digite o codigo do novo produto: \n");
@@ -302,9 +304,11 @@ void inserirProduto(Produto *produto) { //Função para inserir novos produtos n
             printf("1-Limepeza  2-Alimento Perecível  3-Alimento Não Perecível  4-Eletrônico\n");
             scanf("%i",&produto[i].categoria);
             printf("Digite a descrição do produto: \n");
-            scanf("%s",produto[i].descricao);
+            getchar();
+            scanf("%[^\n]s",produto[i].descricao);
             printf("Digite o nome do fabricante:\n");
-            scanf("%s",produto[i].fabricante);
+            getchar();
+            scanf("%[^\n]s",produto[i].fabricante);
             printf("Digite a data de validade(DD MM AAAA):\n");
             scanf("%i %i %i",&produto[i].validade.dia,&produto[i].validade.mes,&produto[i].validade.ano);
             printf("Digite a quantidade do estoque:\n");
@@ -367,6 +371,7 @@ void menuFuncionario(Produto *produto){ //Função do menu do funcionario
 
 int main()
 {
+    setlocale(LC_ALL,"portuguese");
     system ("color f0");
 
     int i,escolha;
@@ -376,16 +381,16 @@ int main()
         printf("Erro na abertura do arquivo\n");
     } else {
         for(i = 0;i < 10; i++) { //Pegando as informações ja salvas no arquivo
-            fscanf(arquivo,"%s\n",produto[i].nome);
-            fscanf(arquivo,"%i\n",&produto[i].categoria);
-            fscanf(arquivo,"%i\n",&produto[i].codigo);
-            fscanf(arquivo,"%f\n",&produto[i].preco);
-            fscanf(arquivo,"%s\n",produto[i].descricao);
-            fscanf(arquivo,"%s\n",produto[i].fabricante);
-            fscanf(arquivo,"%i %i %i\n",&produto[i].validade.dia,&produto[i].validade.mes,&produto[i].validade.ano);
-            fscanf(arquivo,"%i\n",&produto[i].corredor);
-            fscanf(arquivo,"%i\n",&produto[i].prateleira);
-            fscanf(arquivo,"%i\n",&produto[i].qtdestoque);
+            fscanf(arquivo,"%[^\n]s \n",produto[i].nome);
+            fscanf(arquivo,"%i \n",&produto[i].categoria);
+            fscanf(arquivo,"%i \n",&produto[i].codigo);
+            fscanf(arquivo,"%f \n",&produto[i].preco);
+            fscanf(arquivo,"%[^\n]s \n",produto[i].descricao);
+            fscanf(arquivo,"%[^\n]s \n",produto[i].fabricante);
+            fscanf(arquivo,"%i %i %i \n",&produto[i].validade.dia,&produto[i].validade.mes,&produto[i].validade.ano);
+            fscanf(arquivo,"%i \n",&produto[i].corredor);
+            fscanf(arquivo,"%i \n",&produto[i].prateleira);
+            fscanf(arquivo,"%i \n",&produto[i].qtdestoque);
         }
     }
     fclose(arquivo); //Fechando arquivo
@@ -416,16 +421,16 @@ int main()
         printf("Erro na abertura do arquivo\n");
     }else {
         for(i = 0; i < 10; i++) { //Gravando os dados no arquivo
-            fprintf(arquivo,"%s\n",produto[i].nome);
-            fprintf(arquivo,"%i\n",produto[i].categoria);
-            fprintf(arquivo,"%i\n",produto[i].codigo);
-            fprintf(arquivo,"%f\n",produto[i].preco);
-            fprintf(arquivo,"%s\n",produto[i].descricao);
+            fprintf(arquivo,"%s \n",produto[i].nome);
+            fprintf(arquivo,"%i \n",produto[i].categoria);
+            fprintf(arquivo,"%i \n",produto[i].codigo);
+            fprintf(arquivo,"%f \n",produto[i].preco);
+            fprintf(arquivo,"%s \n",produto[i].descricao);
             fprintf(arquivo,"%s\n",produto[i].fabricante);
-            fprintf(arquivo,"%i %i %i\n",produto[i].validade.dia,produto[i].validade.mes,produto[i].validade.ano);
-            fprintf(arquivo,"%i\n",produto[i].corredor);
-            fprintf(arquivo,"%i\n",produto[i].prateleira);
-            fprintf(arquivo,"%i\n",produto[i].qtdestoque);
+            fprintf(arquivo,"%i %i %i \n",produto[i].validade.dia,produto[i].validade.mes,produto[i].validade.ano);
+            fprintf(arquivo,"%i \n",produto[i].corredor);
+            fprintf(arquivo,"%i \n",produto[i].prateleira);
+            fprintf(arquivo,"%i \n",produto[i].qtdestoque);
         }
     }
     fclose(arquivo); //Fechando arquivo com os novos dados salvos
