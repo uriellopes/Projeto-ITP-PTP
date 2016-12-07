@@ -31,111 +31,135 @@ typedef struct{ //Registro para armazenar os itens do carrinho
 void buscarNome(Produto *produto,int numProdutos){ //Função para buscar produtos por nome
     char nomeProduto[50];
     int i,naoExiste = 0;
-    printf("Digite o nome do produto desejado: \n");
-    fflush(stdin);
-    gets(nomeProduto);
-    for(i = 0; i < numProdutos; i++) {
-        if(strncmp(nomeProduto,produto[i].nome,strlen(nomeProduto)) == 0) {
-            printf("Produto: %sPreço: R$%.2f\n",produto[i].nome,produto[i].preco);
-        }else {
-            naoExiste = naoExiste + 1;
+    if(numProdutos == 0) {
+        printf("Não existe nenhum produto registrado\n"); //Se não tiver nenhuma produto registrado aparecerá o aviso
+    }else {
+        printf("Digite o nome do produto desejado: \n"); //Caso tenha produtos ira receber o nome do produto e verificar se ele existe nos registros
+        fflush(stdin);
+        gets(nomeProduto);
+        for(i = 0; i < numProdutos; i++) {
+            if(strncmp(nomeProduto,produto[i].nome,strlen(nomeProduto)) == 0) {
+                printf("Produto: %sPreço: R$%.2f\n",produto[i].nome,produto[i].preco);
+            }else {
+                naoExiste = naoExiste + 1;
+            }
         }
-    }
-    if(naoExiste == numProdutos) {
-        printf("O produto não existe no registro \n");
+        if(naoExiste == numProdutos) {
+            printf("O produto não existe no registro \n"); //Se não existir no registro aparecerá uma mensagem avisando
+        }
     }
 }
 
 void buscarFabricante(Produto *produto,int numProdutos) { //Função para buscar produtos por fabricante
     char nomeFabricante[50];
     int i,naoExiste = 0;
-    printf("Digite o fabricante do produto: \n");
-    fflush(stdin);
-    gets(nomeFabricante);
-    for(i = 0; i < numProdutos; i++) {
-        if(strncmp(nomeFabricante,produto[i].fabricante,strlen(nomeFabricante)) == 0) {
-            printf("Produto: %sPreço:%.2f Fabricante: %s\n",produto[i].nome,produto[i].preco,produto[i].fabricante);
-        }else {
-            naoExiste = naoExiste + 1;
+    if(numProdutos == 0) {
+        printf("Não existe nenhum produto registrado\n"); //Se não tiver nenhuma produto registrado aparecerá o aviso
+    }else {
+        printf("Digite o fabricante do produto: \n"); //Caso tenha produtos irá receber o nome do fabricante e ver se existe no registro
+        fflush(stdin);
+        gets(nomeFabricante);
+        for(i = 0; i < numProdutos; i++) {
+            if(strncmp(nomeFabricante,produto[i].fabricante,strlen(nomeFabricante)) == 0) {
+                printf("Produto: %sPreço:%.2f Fabricante: %s\n",produto[i].nome,produto[i].preco,produto[i].fabricante);
+            }else {
+                naoExiste = naoExiste + 1;
+            }
         }
-    }
-    if(naoExiste == numProdutos) {
-        printf("O produto não existe no registro \n");
+        if(naoExiste == numProdutos) {
+            printf("O produto não existe no registro \n"); //Caso não exista no registro aparecerá uma mensagem
+        }
     }
 }
 
 void ordenarPreco(Produto *produto,int numProdutos){  //Funcao para ordenar os produtos do menor para o maior preço
     int i,j;
     Produto aux;
-    for(i = 0; i < numProdutos; i++) { //Ordenando os produtos de acordo com o preço
-        for(j = i + 1; j < numProdutos; j++) {
-            if(produto[i].preco > produto[j].preco){
-                aux = produto[i];
-                produto[i] = produto[j];
-                produto[j] = aux;
+    if(numProdutos == 0) {
+        printf("Não existe nenhum produto registrado\n"); //Se não tiver nenhuma produto registrado aparecerá o aviso
+    }else {
+        for(i = 0; i < numProdutos; i++) { //Caso existam produtos, eles serão ordenandos de acordo com o preço
+            for(j = i + 1; j < numProdutos; j++) {
+                if(produto[i].preco > produto[j].preco){
+                    aux = produto[i];
+                    produto[i] = produto[j];
+                    produto[j] = aux;
+                }
             }
         }
-    }
-    for(i = 0; i < numProdutos; i++) { //Mostrando os produtos ja ordenados de acordo com o preço
+        for(i = 0; i < numProdutos; i++) { //Mostrando os produtos ja ordenados de acordo com o preço
         printf("Produto: %sPreço: R$%.2f \n",produto[i].nome,produto[i].preco);
+        }
     }
 }
 
 void ordenarQtdEstoque(Produto *produto,int numProdutos) { //Funcao para ordenar os produtos da menor para a maior quantidade no estoque
     int i,j;
     Produto aux;
-    for(i = 0; i < numProdutos; i++) { //Ordenando os produtos de acordo com a quantidade no estoque
-        for(j = i + 1; j < numProdutos; j++) {
-            if(produto[i].qtdestoque > produto[j].qtdestoque) {
-                aux = produto[i];
-                produto[i] = produto[j];
-                produto[j] = aux;
+    if(numProdutos == 0) {
+        printf("Não existe nenhum produto registrado\n"); //Se não tiver nenhuma produto registrado aparecerá o aviso
+    }else {
+        for(i = 0; i < numProdutos; i++) { //Caso existam produtos, eles serão ordenando de acordo com a quantidade no estoque
+            for(j = i + 1; j < numProdutos; j++) {
+                if(produto[i].qtdestoque > produto[j].qtdestoque) {
+                    aux = produto[i];
+                    produto[i] = produto[j];
+                    produto[j] = aux;
+                }
             }
         }
-    }
-    for(i = 0; i < numProdutos; i++) {  //Mostrando os produtos ja ordenados de acordo com a quantidade no estoque
+        for(i = 0; i < numProdutos; i++) {  //Mostrando os produtos ja ordenados de acordo com a quantidade no estoque
         printf("Produto: %sQuantidade no estoque: %i\n",produto[i].nome,produto[i].qtdestoque);
+        }
     }
 }
 
 void ordemAlfabetica(Produto *produto,int numProdutos) { //Função para ordenar os produtos em ordem alfabetica
     int i,j;
     Produto aux;
-    for(i = 0; i < numProdutos; i++) { // Ordenando os produtos
-        for(j = 0; j < numProdutos; j++) {
-            if(strcmp(produto[i].nome,produto[j].nome) < 0) {
-                aux = produto[i];
-                produto[i] = produto[j];
-                produto[j] = aux;
+    if(numProdutos == 0) {
+        printf("Não existe nenhum produto registrado\n"); //Se não tiver nenhuma produto registrado aparecerá o aviso
+    }else {
+        for(i = 0; i < numProdutos; i++) { // Caso existam produtos, eles serão ordenandos por ordem alfabética
+            for(j = 0; j < numProdutos; j++) {
+                if(strcmp(produto[i].nome,produto[j].nome) < 0) {
+                    aux = produto[i];
+                    produto[i] = produto[j];
+                    produto[j] = aux;
+                }
             }
         }
-    }
-    for(i = 0; i < numProdutos; i++) { //Mostrando os produtos em ordem alfabetica
+        for(i = 0; i < numProdutos; i++) { //Mostrando os produtos em ordem alfabetica
         printf("Produto: %sPreço: R$%.2f\n",produto[i].nome,produto[i].preco);
+        }
     }
 }
 
 void ordenarCategoria(Produto *produto,int numProdutos) { //Função para ordenar os produtos por categoria
     int i,j;
     Produto aux;
-    for(i = 0; i < numProdutos; i++) { //Ordenando os produtos por categoria
-        for(j = 0; j < numProdutos; j++) {
-            if(produto[i].categoria > produto[j].categoria) {
-                aux = produto[i];
-                produto[i] = produto[j];
-                produto[j] = aux;
+    if(numProdutos == 0) {
+        printf("Não existe nenhum produto registrado\n"); //Se não tiver nenhuma produto registrado aparecerá o aviso
+    }else {
+        for(i = 0; i < numProdutos; i++) { //Caso existam produtos, eles serão ordenandos por categoria
+            for(j = 0; j < numProdutos; j++) {
+                if(produto[i].categoria > produto[j].categoria) {
+                    aux = produto[i];
+                    produto[i] = produto[j];
+                    produto[j] = aux;
+                }
             }
         }
-    }
-    for(i = 0; i < numProdutos; i++) { //Mostrando os produtos ordenados de acordo com a catergoria
-        if(produto[i].categoria == 1) {
-            printf("Produto: %sPreço: R$%.2f Categoria: Limpeza\n",produto[i].nome,produto[i].preco);
-        } else if(produto[i].categoria == 2) {
-            printf("Produto: %sPreço: R$%.2f Categoria: Alimento Perecível\n",produto[i].nome,produto[i].preco);
-        } else if(produto[i].categoria == 3) {
-            printf("Produto: %sPreço: R$%.2f Categoria: Alimento Não Perecível\n",produto[i].nome,produto[i].preco);
-        } else {
-            printf("Produto: %sPreço: R$%.2f Categoria: Eletrônico\n",produto[i].nome,produto[i].preco);
+        for(i = 0; i < numProdutos; i++) { //Mostrando os produtos ordenados de acordo com a catergoria
+            if(produto[i].categoria == 1) {
+                printf("Produto: %sPreço: R$%.2f Categoria: Limpeza\n",produto[i].nome,produto[i].preco);
+            } else if(produto[i].categoria == 2) {
+                printf("Produto: %sPreço: R$%.2f Categoria: Alimento Perecível\n",produto[i].nome,produto[i].preco);
+            } else if(produto[i].categoria == 3) {
+                printf("Produto: %sPreço: R$%.2f Categoria: Alimento Não Perecível\n",produto[i].nome,produto[i].preco);
+            } else {
+                printf("Produto: %sPreço: R$%.2f Categoria: Eletrônico\n",produto[i].nome,produto[i].preco);
+            }
         }
     }
 }
@@ -212,10 +236,14 @@ void carrinhoDeCompras(Produto *produto,int numProdutos){ //Funcao do Carrinho d
         printf("2 - Retirar produto do carrinho\n");
         printf("3 - Fechar Compra\n");
         printf("0 - Sair\n");
+        fflush(stdin);
         scanf("%i",&escolha);
         system ("cls");
         switch (escolha) {
         case 1:
+            if(numProdutos == 0){
+                printf("Não existem produtos registrados\n"); //Caso não existam produtos registrado aparecerá uma mensagem avisando
+            }
             for(i = 0; i < numProdutos; i++) { //Vendo uma posição vazia do carrinho
                 if(carrinho[i].preco == 0) {
                     printf("Digite o nome do produto desejado: \n"); //Pegando o nome do produto que quer inserir no carrinho
