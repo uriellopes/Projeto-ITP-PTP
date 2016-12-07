@@ -30,25 +30,37 @@ typedef struct{ //Registro para armazenar os itens do carrinho
 
 void buscarNome(Produto *produto,int numProdutos){ //Função para buscar produtos por nome
     char nomeProduto[50];
-    int i;
+    int i,naoExiste = 0;
     printf("Digite o nome do produto desejado: \n");
-    scanf("%s",nomeProduto);
+    fflush(stdin);
+    gets(nomeProduto);
     for(i = 0; i < numProdutos; i++) {
-        if(strcmp(nomeProduto,produto[i].nome) == 0) {
-            printf("Produto: %s Preço: R$%.2f\n",produto[i].nome,produto[i].preco);
+        if(strncmp(nomeProduto,produto[i].nome,strlen(nomeProduto)) == 0) {
+            printf("Produto: %sPreço: R$%.2f\n",produto[i].nome,produto[i].preco);
+        }else {
+            naoExiste = naoExiste + 1;
         }
+    }
+    if(naoExiste == numProdutos) {
+        printf("O produto não existe no registro \n");
     }
 }
 
 void buscarFabricante(Produto *produto,int numProdutos) { //Função para buscar produtos por fabricante
     char nomeFabricante[50];
-    int i;
+    int i,naoExiste = 0;
     printf("Digite o fabricante do produto: \n");
-    scanf("%s",nomeFabricante);
+    fflush(stdin);
+    gets(nomeFabricante);
     for(i = 0; i < numProdutos; i++) {
-        if(strcmp(nomeFabricante,produto[i].fabricante) == 0) {
-            printf("Produto: %s Preço:%.2f Fabricante: %s\n",produto[i].nome,produto[i].preco,produto[i].fabricante);
+        if(strncmp(nomeFabricante,produto[i].fabricante,strlen(nomeFabricante)) == 0) {
+            printf("Produto: %sPreço:%.2f Fabricante: %s\n",produto[i].nome,produto[i].preco,produto[i].fabricante);
+        }else {
+            naoExiste = naoExiste + 1;
         }
+    }
+    if(naoExiste == numProdutos) {
+        printf("O produto não existe no registro \n");
     }
 }
 
@@ -65,7 +77,7 @@ void ordenarPreco(Produto *produto,int numProdutos){  //Funcao para ordenar os p
         }
     }
     for(i = 0; i < numProdutos; i++) { //Mostrando os produtos ja ordenados de acordo com o preço
-        printf("Produto: %s Preço: R$%.2f \n",produto[i].nome,produto[i].preco);
+        printf("Produto: %sPreço: R$%.2f \n",produto[i].nome,produto[i].preco);
     }
 }
 
@@ -82,7 +94,7 @@ void ordenarQtdEstoque(Produto *produto,int numProdutos) { //Funcao para ordenar
         }
     }
     for(i = 0; i < numProdutos; i++) {  //Mostrando os produtos ja ordenados de acordo com a quantidade no estoque
-        printf("Produto: %s Quantidade no estoque: %i\n",produto[i].nome,produto[i].qtdestoque);
+        printf("Produto: %sQuantidade no estoque: %i\n",produto[i].nome,produto[i].qtdestoque);
     }
 }
 
@@ -99,7 +111,7 @@ void ordemAlfabetica(Produto *produto,int numProdutos) { //Função para ordenar
         }
     }
     for(i = 0; i < numProdutos; i++) { //Mostrando os produtos em ordem alfabetica
-        printf("Produto: %s Preço: R$%.2f\n",produto[i].nome,produto[i].preco);
+        printf("Produto: %sPreço: R$%.2f\n",produto[i].nome,produto[i].preco);
     }
 }
 
@@ -117,13 +129,13 @@ void ordenarCategoria(Produto *produto,int numProdutos) { //Função para ordena
     }
     for(i = 0; i < numProdutos; i++) { //Mostrando os produtos ordenados de acordo com a catergoria
         if(produto[i].categoria == 1) {
-            printf("Produto: %s Preço: R$%.2f Categoria: Limpeza\n",produto[i].nome,produto[i].preco);
+            printf("Produto: %sPreço: R$%.2f Categoria: Limpeza\n",produto[i].nome,produto[i].preco);
         } else if(produto[i].categoria == 2) {
-            printf("Produto: %s Preço: R$%.2f Categoria: Alimento Perecível\n",produto[i].nome,produto[i].preco);
+            printf("Produto: %sPreço: R$%.2f Categoria: Alimento Perecível\n",produto[i].nome,produto[i].preco);
         } else if(produto[i].categoria == 3) {
-            printf("Produto: %s Preço: R$%.2f Categoria: Alimento Não Perecível\n",produto[i].nome,produto[i].preco);
+            printf("Produto: %sPreço: R$%.2f Categoria: Alimento Não Perecível\n",produto[i].nome,produto[i].preco);
         } else {
-            printf("Produto: %s Preço: R$%.2f Categoria: Eletrônico\n",produto[i].nome,produto[i].preco);
+            printf("Produto: %sPreço: R$%.2f Categoria: Eletrônico\n",produto[i].nome,produto[i].preco);
         }
     }
 }
@@ -207,10 +219,11 @@ void carrinhoDeCompras(Produto *produto,int numProdutos){ //Funcao do Carrinho d
             for(i = 0; i < numProdutos; i++) { //Vendo uma posição vazia do carrinho
                 if(carrinho[i].preco == 0) {
                     printf("Digite o nome do produto desejado: \n"); //Pegando o nome do produto que quer inserir no carrinho
-                    scanf("%s",nomeProduto);
+                    fflush(stdin);
+                    gets(nomeProduto);
                     naoExiste = 0;
                     for(j = 0; j < numProdutos; j++) { //Verificando se o produto existe no registro
-                        if(strcmp(nomeProduto,produto[j].nome) == 0){
+                        if(strncmp(nomeProduto,produto[j].nome,strlen(nomeProduto)) == 0){
                             strcpy(carrinho[i].nome,nomeProduto); //Salvando produto na posição vazia que foi encontrada
                             printf("Digite a quantidade desejada do produto: \n"); //Pegando a quantidade do produto que deseja inserir
                             scanf("%i",&carrinho[i].quantidade);
@@ -232,10 +245,11 @@ void carrinhoDeCompras(Produto *produto,int numProdutos){ //Funcao do Carrinho d
             break;
         case 2:
             printf("Digite o nome do produto que deseja remover: \n"); //Pegando o produto para remover
-            scanf("%s",nomeProduto);
+            fflush(stdin);
+            gets(nomeProduto);
             naoExiste = 0;
             for(i = 0; i < numProdutos; i++) { //Verificando se o produto está no carrinho
-                if(strcmp(nomeProduto,carrinho[i].nome) == 0) { //Confirmando se ele está no carrinho e deletando caso esteja
+                if(strncmp(nomeProduto,carrinho[i].nome,strlen(nomeProduto)) == 0) { //Confirmando se ele está no carrinho e deletando caso esteja
                     strcpy(carrinho[i].nome,"0");
                     carrinho[i].preco = 0;
                     carrinho[i].quantidade = 0;
@@ -297,9 +311,10 @@ void inserirProduto(Produto *produto,int numProdutos) { //Função para inserir 
     int i,novo = 0,qtdNovoProduto = 0;
     char novoProduto[50];
     printf("Digite o nome do novo produto: \n"); //Recebendo o nome do novo produto
-    scanf("%s",novoProduto);
+    fflush(stdin);
+    gets(novoProduto);
     for(i = 0; i < numProdutos; i++) { //Verificando se ele existe no registro, caso não exista, aumentar o contador
-        if(strcmp(novoProduto,produto[i].nome) == 0) {
+        if(strncmp(novoProduto,produto[i].nome,strlen(novoProduto)) == 0) {
             printf("O produto ja está registrado\n");
             break;
         }else {
@@ -318,12 +333,12 @@ void inserirProduto(Produto *produto,int numProdutos) { //Função para inserir 
         Produto novosProdutos[qtdNovoProduto + 1]; //Variavel para armazenar os valores dos novos produtos
         novoArquivo = fopen("novoproduto.txt","r");
         for(i = 0; i < qtdNovoProduto; i++){ //Lendo os valores dos produtos ja armazenados caso ja existam
-            fscanf(novoArquivo,"Produto: %s\n",novosProdutos[i].nome);
+            fscanf(novoArquivo,"%s",novosProdutos[i].nome);
             fscanf(novoArquivo,"Categoria: %i\n",&novosProdutos[i].categoria);
             fscanf(novoArquivo,"Codigo: %i\n",&novosProdutos[i].codigo);
             fscanf(novoArquivo,"Preço: %f\n",&novosProdutos[i].preco);
-            fscanf(novoArquivo,"Descrição: %s\n",novosProdutos[i].descricao);
-            fscanf(novoArquivo,"Fabricante: %s\n",novosProdutos[i].fabricante);
+            fscanf(novoArquivo,"%s",novosProdutos[i].descricao);
+            fscanf(novoArquivo,"%s",novosProdutos[i].fabricante);
             fscanf(novoArquivo,"Data de validade: %i / %i / %i\n",&novosProdutos[i].validade.dia,&novosProdutos[i].validade.mes,&novosProdutos[i].validade.ano);
             fscanf(novoArquivo,"Corredor: %i\n",&novosProdutos[i].corredor);
             fscanf(novoArquivo,"Prateleira: %i\n",&novosProdutos[i].prateleira);
@@ -338,9 +353,11 @@ void inserirProduto(Produto *produto,int numProdutos) { //Função para inserir 
         printf("Digite o preço do novo produto: \n");
         scanf("%f",&novosProdutos[qtdNovoProduto].preco);
         printf("Digite a descrição do novo produto: \n");
-        scanf("%s",novosProdutos[qtdNovoProduto].descricao);
+        fflush(stdin);
+        gets(novosProdutos[qtdNovoProduto].descricao);
         printf("Digite o fabricante do novo produto: \n");
-        scanf("%s",novosProdutos[qtdNovoProduto].fabricante);
+        fflush(stdin);
+        gets(novosProdutos[qtdNovoProduto].fabricante);
         printf("Digite a data de validade do novo produto(DD MM AAAA): \n");
         scanf("%i %i %i",&novosProdutos[qtdNovoProduto].validade.dia,&novosProdutos[qtdNovoProduto].validade.mes,&novosProdutos[qtdNovoProduto].validade.ano);
         printf("Digite o corredor e a prateleira onde encontrar o novo produto: \n");
@@ -350,18 +367,19 @@ void inserirProduto(Produto *produto,int numProdutos) { //Função para inserir 
         novoArquivo = fopen("novoproduto.txt","w");  //Armazenando todos os novos produtos em um arquivo para salva-los e adicionar ao registro principal depois
         fprintf(novoArquivo,"Quandotidade de produtos novos: %i\n",qtdNovoProduto + 1);
         for(i = 0; i < (qtdNovoProduto + 1); i++) {
-            fprintf(novoArquivo,"Produto: %s\n",novosProdutos[i].nome);
+            fprintf(novoArquivo,"%s \n",novosProdutos[i].nome);
             fprintf(novoArquivo,"Categoria: %i\n",novosProdutos[i].categoria);
             fprintf(novoArquivo,"Codigo: %i\n",novosProdutos[i].codigo);
             fprintf(novoArquivo,"Preço: %f\n",novosProdutos[i].preco);
-            fprintf(novoArquivo,"Descrição: %s\n",novosProdutos[i].descricao);
-            fprintf(novoArquivo,"Fabricante: %s\n",novosProdutos[i].fabricante);
+            fprintf(novoArquivo,"%s \n",novosProdutos[i].descricao);
+            fprintf(novoArquivo,"%s \n",novosProdutos[i].fabricante);
             fprintf(novoArquivo,"Data de validade: %i / %i / %i\n",novosProdutos[i].validade.dia,novosProdutos[i].validade.mes,novosProdutos[i].validade.ano);
             fprintf(novoArquivo,"Corredor: %i\n",novosProdutos[i].corredor);
             fprintf(novoArquivo,"Prateleira: %i\n",novosProdutos[i].prateleira);
             fprintf(novoArquivo,"Quantidade no estoque: %i\n",novosProdutos[i].qtdestoque);
         }
         fclose(novoArquivo);
+        fflush(stdin);
     }
 }
 
@@ -369,10 +387,11 @@ void reporEstoque(Produto *produto,int numProdutos) { //Função para repor o es
     int i,naoExiste,novoEstoque;
     char nomeProduto[50];
     printf("Digite o produto que deseja repor: \n");  //Pegando o nome do produto que deseja repor
-    scanf("%s",nomeProduto);
+    fflush(stdin);
+    gets(nomeProduto);
     naoExiste = 0;
     for(i = 0; i < numProdutos; i++) { //Verificando se ele existe no estoque, se não, aumentar o contador de que ele não existe
-            if(strcmp(nomeProduto,produto[i].nome) == 0){
+            if(strncmp(nomeProduto,produto[i].nome,strlen(nomeProduto)) == 0){
                 printf("Digite a quantas unidades deseja adicionar ao estoque: \n");
                 scanf("%i",&novoEstoque);
                 produto[i].qtdestoque = produto[i].qtdestoque + novoEstoque;
@@ -455,12 +474,12 @@ int main()
     } else {
         fscanf(arquivo,"Quandidade de produtos: %i\n",&numProdutos);
         for(i = 0; i < numProdutos; i++) { //Lendo os dados do arquivo
-            fscanf(arquivo,"Produto: %s\n",produto[i].nome);
+            fgets(produto[i].nome,50,arquivo);
             fscanf(arquivo,"Categoria: %i\n",&produto[i].categoria);
             fscanf(arquivo,"Codigo: %i\n",&produto[i].codigo);
             fscanf(arquivo,"Preço: %f\n",&produto[i].preco);
-            fscanf(arquivo,"Descrição: %s\n",produto[i].descricao);
-            fscanf(arquivo,"Fabricante: %s\n",produto[i].fabricante);
+            fgets(produto[i].descricao,100,arquivo);
+            fgets(produto[i].fabricante,50,arquivo);
             fscanf(arquivo,"Data de validade: %i / %i / %i\n",&produto[i].validade.dia,&produto[i].validade.mes,&produto[i].validade.ano);
             fscanf(arquivo,"Corredor: %i\n",&produto[i].corredor);
             fscanf(arquivo,"Prateleira: %i\n",&produto[i].prateleira);
@@ -501,12 +520,12 @@ int main()
         numProdutos = numProdutos + produtoNovo;
         fprintf(arquivo,"Quandidade de produtos: %i\n",numProdutos);
         for(i = 0; i < (numProdutos - produtoNovo); i++) { //Gravando os dados no arquivo
-            fprintf(arquivo,"Produto: %s\n",produto[i].nome);
+            fprintf(arquivo,"%s",produto[i].nome);
             fprintf(arquivo,"Categoria: %i\n",produto[i].categoria);
             fprintf(arquivo,"Codigo: %i\n",produto[i].codigo);
             fprintf(arquivo,"Preço: %f\n",produto[i].preco);
-            fprintf(arquivo,"Descrição: %s\n",produto[i].descricao);
-            fprintf(arquivo,"Fabricante: %s\n",produto[i].fabricante);
+            fprintf(arquivo,"%s",produto[i].descricao);
+            fprintf(arquivo,"%s",produto[i].fabricante);
             fprintf(arquivo,"Data de validade: %i / %i / %i\n",produto[i].validade.dia,produto[i].validade.mes,produto[i].validade.ano);
             fprintf(arquivo,"Corredor: %i\n",produto[i].corredor);
             fprintf(arquivo,"Prateleira: %i\n",produto[i].prateleira);
@@ -521,22 +540,22 @@ int main()
         Produto novosProdutos[produtoNovo];
         arquivo = fopen("produtos.txt","a");
         for(i = 0; i < produtoNovo; i++) { //Lendo os produtos novos do arquivos de produtos novos e salvando no arquivo do registro principal
-            fscanf(novoProduto,"Produto: %s\n",novosProdutos[i].nome);
+            fgets(novosProdutos[i].nome,50,novoProduto);
             fscanf(novoProduto,"Categoria: %i\n",&novosProdutos[i].categoria);
             fscanf(novoProduto,"Codigo: %i\n",&novosProdutos[i].codigo);
             fscanf(novoProduto,"Preço: %f\n",&novosProdutos[i].preco);
-            fscanf(novoProduto,"Descrição: %s\n",novosProdutos[i].descricao);
-            fscanf(novoProduto,"Fabricante: %s\n",novosProdutos[i].fabricante);
+            fgets(novosProdutos[i].descricao,100,novoProduto);
+            fgets(novosProdutos[i].fabricante,50,novoProduto);
             fscanf(novoProduto,"Data de validade: %i / %i / %i\n",&novosProdutos[i].validade.dia,&novosProdutos[i].validade.mes,&novosProdutos[i].validade.ano);
             fscanf(novoProduto,"Corredor: %i\n",&novosProdutos[i].corredor);
             fscanf(novoProduto,"Prateleira: %i\n",&novosProdutos[i].prateleira);
             fscanf(novoProduto,"Quantidade no estoque: %i\n",&novosProdutos[i].qtdestoque);
-            fprintf(arquivo,"Produto: %s\n",novosProdutos[i].nome);
+            fprintf(arquivo,"%s",novosProdutos[i].nome);
             fprintf(arquivo,"Categoria: %i\n",novosProdutos[i].categoria);
             fprintf(arquivo,"Codigo: %i\n",novosProdutos[i].codigo);
             fprintf(arquivo,"Preço: %f\n",novosProdutos[i].preco);
-            fprintf(arquivo,"Descrição: %s\n",novosProdutos[i].descricao);
-            fprintf(arquivo,"Fabricante: %s\n",novosProdutos[i].fabricante);
+            fprintf(arquivo,"%s",novosProdutos[i].descricao);
+            fprintf(arquivo,"%s",novosProdutos[i].fabricante);
             fprintf(arquivo,"Data de validade: %i / %i / %i\n",novosProdutos[i].validade.dia,novosProdutos[i].validade.mes,novosProdutos[i].validade.ano);
             fprintf(arquivo,"Corredor: %i\n",novosProdutos[i].corredor);
             fprintf(arquivo,"Prateleira: %i\n",novosProdutos[i].prateleira);
